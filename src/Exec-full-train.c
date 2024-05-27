@@ -40,7 +40,9 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
+#if !defined(_WIN32)
 #include <sys/time.h>
+#endif
 
 #include "ParallelAlgorithms.h"
 #include "full-train.h"

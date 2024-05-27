@@ -42,7 +42,9 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
+#if !defined(_WIN32)
 #include <sys/time.h>
+#endif
 
 #include "ParallelAlgorithms.h"
 #include "full-train.h"
@@ -391,7 +393,7 @@ double* trainFULL(svm_dataset dataset,properties props){
     double *beta=(double *) calloc((dataset.l+1),sizeof(double));
     double *betaNew=(double *) calloc((dataset.l+1),sizeof(double));
     double *betaBest=(double *) calloc((dataset.l+1),sizeof(double));
-    double *betaTmp;
+    double *betaTmp = NULL;
 
     int *SW = (int *) calloc(MaxWorkingSize,sizeof(int));
     int *SIN = (int *) calloc(dataset.l,sizeof(int));
